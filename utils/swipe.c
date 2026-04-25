@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:57:25 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:03:15 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 16:06:29 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ int    going_left(t_grid *grid)
             int index = 0;
             if (grid->cell_grid[x][y].value != 0)
             {
-                while (grid->cell_grid[x - index - 1][y].value == 0)
+                while (x - index - 1 >= 0 && grid->cell_grid[x - index - 1][y].value == 0)
                 {
                     grid->cell_grid[x - index - 1][y].value += grid->cell_grid[x - index][y].value;    
                     grid->cell_grid[x - index][y].value = 0;
                     moved++;
                     index++;
                 }
-                if ((grid->cell_grid[x - index - 1][y].value == grid->cell_grid[x - index][y].value)
+                if (x - index - 1 >= 0
+                    && (grid->cell_grid[x - index - 1][y].value == grid->cell_grid[x - index][y].value)
                 && grid->cell_grid[x - index - 1][y].merged == 0)
                 {
                     grid->cell_grid[x - index - 1][y].value += grid->cell_grid[x - index][y].value;
