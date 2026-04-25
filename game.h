@@ -39,6 +39,7 @@ typedef struct s_game_data
 	int			start_y;
 	int			start_x;
     int         win_flag;
+	int			pause_game;
 	t_grid		grid;
 }				t_game_data;
 

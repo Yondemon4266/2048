@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 22:17:14 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 23:37:29 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ static void	draw_numbers(t_game_data *g_data)
 
 void	draw_board(t_game_data *g_data)
 {
+	if (g_data->cell_height < 1 || g_data->cell_width < 4)
+	{
+		int	centered_x = get_center_offset(COLS, 18);
+		int	centered_y = get_center_offset(LINES, 1);
+
+		mvprintw(centered_y, centered_x, "Terminal too small");
+		return ;
+	}
+	if (g_data->pause_game != 0)
+		g_data->pause_game = 0;
 	draw_board_lines(g_data);
 	draw_board_cols(g_data);
 	draw_numbers(g_data);
