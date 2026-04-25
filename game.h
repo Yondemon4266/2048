@@ -49,6 +49,11 @@ int     ncurses_print_nbr(int nb, int x, int y);
 int     count_len_number(int nb);
 int     get_center_offset(int container_size, int item_size);
 void    reset_merged(t_grid *grid);
-void    going_left(t_grid *grid);
+int     going_left(t_grid *grid);
+int     going_right(t_grid *grid);
+int     going_up(t_grid *grid);
+int     going_down(t_grid *grid);
+int     count_zeros(t_grid *grid);
+int     check_game_finished(t_grid grid);
 
 #endif
