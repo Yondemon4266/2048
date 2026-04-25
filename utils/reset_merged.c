@@ -12,18 +12,18 @@
 
 #include "../game.h"
 
-void    reset_merged(t_grid *grid)
+void	reset_merged(t_grid *grid)
 {
-    int y = 0;
-    
-    while (y < grid->row)
-    {
-        int x = 0;
-        while (x < grid->column)
-        {
-            grid->cell_grid[x][y].merged = 0;
-            x++;
-        }
-        y++;
-    }
+	int y = 0;
+
+	while (y < grid->row)
+	{
+		int x = 0;
+		while (x < grid->column)
+		{
+			grid->cell_grid[x][y].merged = 0;
+			x++;
+		}
+		y++;
+	}
 }

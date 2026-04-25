@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_zeros.c                                      :+:      :+:    :+:   */
+/*   check_win_cond_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 15:35:36 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:55:50 by aluslu           ###   ########.fr       */
+/*   Created: 2026/04/25 22:21:27 by aluslu            #+#    #+#             */
+/*   Updated: 2026/04/25 23:16:34 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-int	count_zeros(t_grid grid)
+int	check_win_cond_value(void)
 {
-	int res = 0;
-	int y = 0;
+	long long min = 2;
+	long long win_val = (long long)WIN_VALUE;
 
-	while (y < grid.row)
+	if (win_val < min)
+		return (-1);
+	if (win_val > INT_MAX)
+		return (-1);
+	while (min < win_val)
 	{
-		int x = 0;
-		while (x < grid.column)
-		{
-			if (grid.cell_grid[x][y].value == 0)
-				res++;
-			x++;
-		}
-		y++;
+		min *= 2;
+		if (min > INT_MAX || min > win_val)
+			return (-1);
+		if (min == win_val)
+			return (1);
 	}
-
-	return (res);
+	return (-1);
 }

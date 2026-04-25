@@ -12,43 +12,44 @@
 
 #include "../game.h"
 
-int get_new_pos(t_grid grid)
+int	get_new_pos(t_grid grid)
 {
-    int zeros = count_zeros(grid);
+	int	zeros;
 
-    return (rand() % zeros);
+	zeros = count_zeros(grid);
+	return (rand() % zeros);
 }
 
-void    add_number(t_grid *grid, int pos)
+void	add_number(t_grid *grid, int pos)
 {
-    int y = 0;
-    int index = 0;
+	int y = 0;
+	int index = 0;
 
-    int random = rand() % 5;
-    int value = 0;
+	int random = rand() % 5;
+	int value = 0;
 
-    if (random == 4)
-        value = 4;
-    else
-        value = 2;
-    
-    while (y < grid->row)
-    {
-        int x = 0;
-        while (x < grid->column)
-        {
-            if (grid->cell_grid[x][y].value == 0)
-            {
-                if (pos == index)
-                {
-                    grid->cell_grid[x][y].value = value;
-                    return ;
-                }
-                else
-                    index++;
-            }
-            x++;
-        }
-        y++;
-    }
+	if (random == 4)
+		value = 4;
+	else
+		value = 2;
+
+	while (y < grid->row)
+	{
+		int x = 0;
+		while (x < grid->column)
+		{
+			if (grid->cell_grid[x][y].value == 0)
+			{
+				if (pos == index)
+				{
+					grid->cell_grid[x][y].value = value;
+					return ;
+				}
+				else
+					index++;
+			}
+			x++;
+		}
+		y++;
+	}
 }

@@ -11,6 +11,7 @@ BUILD_DIR = .build
 
 C_FILES = main.c display/display_utils.c display/display.c display/hooks.c \
 	utils/reset_merged.c utils/swipe.c utils/add_number.c utils/check_game_finished.c utils/count_zeros.c \
+	utils/check_win_cond_value.c utils/utils.c
 
 O_FILES = $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 

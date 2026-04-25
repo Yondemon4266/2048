@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_zeros.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 15:35:36 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:55:50 by aluslu           ###   ########.fr       */
+/*   Created: 2026/04/25 22:34:06 by aluslu            #+#    #+#             */
+/*   Updated: 2026/04/25 22:35:59 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-int	count_zeros(t_grid grid)
+void	ft_putstr_fd(int fd, char *s)
 {
-	int res = 0;
-	int y = 0;
-
-	while (y < grid.row)
+	int i = 0;
+	while (s[i])
 	{
-		int x = 0;
-		while (x < grid.column)
-		{
-			if (grid.cell_grid[x][y].value == 0)
-				res++;
-			x++;
-		}
-		y++;
+		write(fd, &s[i], 1);
+		i++;
 	}
-
-	return (res);
 }
