@@ -6,7 +6,11 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:57:25 by alemyre           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/04/25 15:23:20 by aluslu           ###   ########.fr       */
+=======
+/*   Updated: 2026/04/25 15:34:24 by alemyre          ###   ########.fr       */
+>>>>>>> 8f2737ca77bcdc5da72e5f3e502c837a88648b54
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +41,112 @@ int    going_left(t_grid *grid)
                 {
                     grid->cell_grid[x - index - 1][y].value += grid->cell_grid[x - index][y].value;
                     grid->cell_grid[x - index][y].value = 0;
+                    moved++;
+                }
+                x++;
+            }
+        }
+        y++;
+    }
+    return (moved);
+}
+
+int    going_right(t_grid *grid)
+{
+    int moved = 0;
+    int y = 0;
+    
+    while (y < grid->row)
+    {
+        int x = grid->column - 2;
+        while (x <= 0)
+        {
+            int index = 0;
+            if (grid->cell_grid[x][y].value != 0)
+            {
+                while (grid->cell_grid[x + index + 1][y].value == 0)
+                {
+                    grid->cell_grid[x + index + 1][y].value += grid->cell_grid[x + index][y].value;    
+                    grid->cell_grid[x + index][y].value = 0;
+                    moved++;
+                    index--;
+                }
+                if ((grid->cell_grid[x + index + 1][y].value == grid->cell_grid[x + index][y].value)
+                && grid->cell_grid[x + index + 1][y].merged == 0)
+                {
+                    grid->cell_grid[x + index + 1][y].value += grid->cell_grid[x + index][y].value;
+                    grid->cell_grid[x + index][y].value = 0;
+                    moved++;
+                }
+                x++;
+            }
+        }
+        y++;
+    }
+    return (moved);
+}
+
+int    going_down(t_grid *grid)
+{
+    int moved = 0;
+    int x = 0;
+    
+    while (x < grid->column)
+    {
+        int y = grid->row - 2;
+        while (y <= 0)
+        {
+            int index = 0;
+            if (grid->cell_grid[x][y].value != 0)
+            {
+                while (grid->cell_grid[x][y + index + 1].value == 0)
+                {
+                    grid->cell_grid[x][y + index + 1].value += grid->cell_grid[x][y + index].value;    
+                    grid->cell_grid[x][y + index].value = 0;
+                    moved++;
+                    index--;
+                }
+                if ((grid->cell_grid[x][y + index + 1].value == grid->cell_grid[x][y + index].value)
+                && grid->cell_grid[x][y + index + 1].merged == 0)
+                {
+                    grid->cell_grid[x][y + index + 1].value += grid->cell_grid[x][y + index].value;
+                    grid->cell_grid[x][y + index].value = 0;
+                    moved++;
+                }
+                x++;
+            }
+        }
+        y++;
+    }
+    return (moved);
+}
+
+int    going_up(t_grid *grid)
+{
+    int moved = 0;
+    int x = 0;
+    
+    while (x < grid->column)
+    {
+        int y = 1;
+        while (y < grid->row)
+        {
+            int index = 0;
+            if (grid->cell_grid[x][y].value != 0)
+            {
+                while (grid->cell_grid[x][y - index - 1].value == 0)
+                {
+                    grid->cell_grid[x][y - index - 1].value += grid->cell_grid[x][y - index].value;    
+                    grid->cell_grid[x][y - index].value = 0;
+                    moved++;
+                    index--;
+                }
+                if ((grid->cell_grid[x][y - index - 1].value == grid->cell_grid[x][y - index].value)
+                && grid->cell_grid[x][y - index - 1].merged == 0)
+                {
+                    grid->cell_grid[x][y - index - 1].value += grid->cell_grid[x][y - index].value;
+                    grid->cell_grid[x][y - index].value = 0;
+                    moved++;
                 }
                 x++;
             }
