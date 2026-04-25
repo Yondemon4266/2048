@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:27:16 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 15:11:38 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 15:23:08 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void    key_hook(t_game_data *g_data)
             g_data->game_running = 0;
             break ;
         case KEY_LEFT:
+            going_left(&g_data->grid);
             break ;
         case KEY_RIGHT:
             break ;

@@ -11,13 +11,6 @@ enum e_const
     WIN_VALUE = 2048
 };
 
-typedef struct s_grid
-{
-    int     row;
-    int     column;
-    int     score;
-    t_cell  cell_grid[4][4];
-}           t_grid;
 
 typedef struct s_cell
 {
@@ -25,6 +18,14 @@ typedef struct s_cell
     int     merged;
 }           t_cell;
 
+
+typedef struct s_grid
+{
+    int     row;
+    int     column;
+    int     score;
+    t_cell  cell_grid[4][4];
+}           t_grid;
 
 typedef struct s_game_data
 {
@@ -49,6 +50,6 @@ int     ncurses_print_nbr(int nb, int x, int y);
 int     count_len_number(int nb);
 int     get_center_offset(int container_size, int item_size);
 void    reset_merged(t_grid *grid);
-void    going_left(t_grid *grid);
+int     going_left(t_grid *grid);
 
 #endif
