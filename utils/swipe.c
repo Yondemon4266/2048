@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:57:25 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 15:10:47 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 15:23:38 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int    going_left(t_grid *grid)
                 {
                     grid->cell_grid[x - index - 1][y].value += grid->cell_grid[x - index][y].value;
                     grid->cell_grid[x - index][y].value = 0;
+                    moved++;
                 }
                 x++;
             }
