@@ -54,7 +54,9 @@ int     going_left(t_grid *grid);
 int     going_right(t_grid *grid);
 int     going_up(t_grid *grid);
 int     going_down(t_grid *grid);
-int     count_zeros(t_grid *grid);
+int     count_zeros(t_grid grid);
 int     check_game_finished(t_grid grid);
+void    add_number(t_grid *grid, int pos);
+int     get_new_pos(t_grid grid);
 
 #endif
