@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reset_merged.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:56:29 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 14:56:47 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 15:20:06 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "../game.h"
 
 void    reset_merged(t_grid *grid)
 {

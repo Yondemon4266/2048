@@ -3,13 +3,6 @@
 
 
 
-static int min_of_two(int a, int b)
-{
-    if (a < b)
-        return (a);
-    return (b);
-}
-
 int get_center_offset(int container_size, int item_size)
 {
     if (container_size <= item_size)

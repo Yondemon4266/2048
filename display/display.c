@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 14:36:38 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 15:48:14 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,30 @@ static void    draw_board_cols(t_game_data *g_data)
     }
 }
 
+void    draw_numbers(t_game_data *g_data)
+{
+    int y = 0;
+    int x;
+    
+    while (y < g_data->nb_of_cell)
+    {
+        x = 0;
+        while (x < g_data->nb_of_cell)
+        {
+            int value = g_data->grid.cell_grid[x][y].value;
+            int len_value = count_len_number(value);
+            int centered_x = g_data->start_x + (g_data->cell_width * y) + get_center_offset(g_data->cell_width, len_value);
+            int centered_y = g_data->start_y + (g_data->cell_height * x) + (g_data->cell_height / 2);
+            ncurses_print_nbr(value, centered_x, centered_y);
+            x++;
+        }
+        y++;
+    }
+}
+
 void    draw_board(t_game_data *g_data)
 {
     draw_board_lines(g_data);
     draw_board_cols(g_data);
+    draw_numbers(g_data);
 }

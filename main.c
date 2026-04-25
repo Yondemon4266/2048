@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 14:59:40 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 15:55:24 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@ void    init_game_data(t_game_data *g_data)
     g_data->nb_of_cell = 4;
     g_data->game_running = 1;
     g_data->margin = 1;
+    g_data->grid.row = g_data->nb_of_cell;
+    g_data->grid.column = g_data->nb_of_cell;
+
     calculate_dimensions(g_data);
 }
 
-/*
-    t_grid  grid = {4, 4, 0, {
-        {{0, 0}, {0, 0}, {0, 0}, {0, 0}},
-        {{0, 0}, {0, 0}, {0, 0}, {0, 0}},
-        {{0, 0}, {0, 0}, {0, 0}, {0, 0}},
-        {{0, 0}, {0, 0}, {0, 0}, {0, 0}}
-    }};
-*/
+
 
 int main()
 {

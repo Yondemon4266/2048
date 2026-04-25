@@ -11,13 +11,6 @@ enum e_const
     WIN_VALUE = 2048
 };
 
-typedef struct s_grid
-{
-    int     row;
-    int     column;
-    int     score;
-    t_cell  cell_grid[4][4];
-}           t_grid;
 
 typedef struct s_cell
 {
@@ -25,6 +18,14 @@ typedef struct s_cell
     int     merged;
 }           t_cell;
 
+
+typedef struct s_grid
+{
+    int     row;
+    int     column;
+    int     score;
+    t_cell  cell_grid[4][4];
+}           t_grid;
 
 typedef struct s_game_data
 {
