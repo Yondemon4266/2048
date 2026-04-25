@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:57:25 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:14:02 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 16:14:54 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int    going_right(t_grid *grid)
                     grid->cell_grid[x + index][y].value = 0;
                     moved++;
                 }
-                x++;
             }
+            x++;
         }
         y++;
     }
@@ -110,8 +110,8 @@ int    going_down(t_grid *grid)
                     grid->cell_grid[x][y + index].value = 0;
                     moved++;
                 }
-                x++;
             }
+            x++;
         }
         y++;
     }
@@ -145,8 +145,8 @@ int    going_up(t_grid *grid)
                     grid->cell_grid[x][y - index].value = 0;
                     moved++;
                 }
-                x++;
             }
+            x++;
         }
         y++;
     }
