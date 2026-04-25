@@ -46,7 +46,10 @@ int ncurses_print_nbr(int nb, int x, int y)
         x = ncurses_print_nbr(nb / 10, x, y);
     }
     
-    mvaddch(y, x, (nb % 10) + '0');
+    if (nb != 0)
+        mvaddch(y, x, (nb % 10) + '0');
+    else
+        mvaddch(y, x, ' ');
     
     return (x + 1);
 }
