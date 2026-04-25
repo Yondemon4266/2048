@@ -45,7 +45,7 @@ typedef struct s_game_data
 
 void    draw_board(t_game_data *g_data);
 void    calculate_dimensions(t_game_data *g_data);
-void    key_hook(t_game_data *g_data);
+int    key_hook(t_game_data *g_data);
 int     ncurses_print_nbr(int nb, int x, int y);
 int     count_len_number(int nb);
 int     get_center_offset(int container_size, int item_size);
@@ -55,7 +55,7 @@ int     going_right(t_grid *grid);
 int     going_up(t_grid *grid);
 int     going_down(t_grid *grid);
 int     count_zeros(t_grid grid);
-int     check_game_finished(t_grid grid);
+int     gameover(t_grid grid);
 void    add_number(t_grid *grid, int pos);
 int     get_new_pos(t_grid grid);
 

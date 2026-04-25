@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 18:01:31 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 19:16:07 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,19 @@ int main()
     init_game_data(&g_data);
     while (g_data.game_running)
     {
-        clear();
-        draw_board(&g_data);
-        refresh();
-        g_data.key = getch();
-        key_hook(&g_data);
-        add_number(&g_data.grid, get_new_pos(g_data.grid));
+        if (!gameover(g_data.grid))
+        {
+            clear();
+            draw_board(&g_data);
+            refresh();
+            g_data.key = getch();
+            reset_merged(&g_data.grid);
+            if (!key_hook(&g_data))
+                continue;
+            add_number(&g_data.grid, get_new_pos(g_data.grid));
+        }
+        else
+            break;
     }
 
     endwin();

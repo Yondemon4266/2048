@@ -3,42 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:27:16 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 16:57:24 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 19:08:53 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
 
-void    key_hook(t_game_data *g_data)
+int    key_hook(t_game_data *g_data)
 {
     switch (g_data->key)
     {
         case 'q':
             g_data->game_running = 0;
-            break ;
+            return (-1);
         case 'Q':
             g_data->game_running = 0;
-            break ;
+            return (-1);
         case KEY_LEFT:
-            going_left(&g_data->grid);
-            break ;
+            return (going_left(&g_data->grid));
         case KEY_RIGHT:
-            going_right(&g_data->grid);
-            break ;
+            return (going_right(&g_data->grid));
         case KEY_UP:
-            going_up(&g_data->grid);
-            break ;
+            return (going_up(&g_data->grid));
         case KEY_DOWN:
-            going_down(&g_data->grid);
-            break ;
+            return (going_down(&g_data->grid));
         case KEY_RESIZE:
             calculate_dimensions(g_data);
-            break ;
+            return (0);
         default:
-            break ;
+            return (-1);
     }
+    return (-4);
 }
