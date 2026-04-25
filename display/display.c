@@ -6,11 +6,13 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 12:28:58 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 14:29:55 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
+
+
 
 
 static void    draw_board_lines(t_game_data *g_data)
@@ -22,7 +24,7 @@ static void    draw_board_lines(t_game_data *g_data)
         x = 0;
         while (x < g_data->board_width)
         {
-            mvprintw(y * g_data->cell_height, x, "-");
+            mvprintw(g_data->start_y + (y * g_data->cell_height), g_data->start_x + x, "-");
             x++;
         }
     }
@@ -34,10 +36,10 @@ static void    draw_board_cols(t_game_data *g_data)
     int x = -1;
     while (++x <= g_data->nb_of_cell)
     {
-        y = 1;
+        y = 0;
         while (y <= g_data->board_height)
         {
-            mvprintw(y, x * g_data->cell_width, "|");
+            mvprintw(g_data->start_y + y, g_data->start_x + (x * g_data->cell_width), "|");
             y++;
         }
     }
