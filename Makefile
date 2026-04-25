@@ -1,10 +1,11 @@
 
-NAME = wong_kar_wai
+NAME = 2048
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
 
+NCURSES_LIB = -lncurses
 
 BUILD_DIR = .build
 
@@ -17,7 +18,7 @@ INCLUDES = game.h
 DEPS = $(O_FILES:.o=.d)
 
 $(NAME): $(O_FILES)
-	$(CC) $(CFLAGS) $(O_FILES) -o $(NAME)
+	$(CC) $(CFLAGS) $(O_FILES) -o $(NAME) $(NCURSES_LIB)
 
 all: $(NAME)
 
