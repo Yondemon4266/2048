@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 15:55:24 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 16:53:35 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void    init_game_data(t_game_data *g_data)
     g_data->margin = 1;
     g_data->grid.row = g_data->nb_of_cell;
     g_data->grid.column = g_data->nb_of_cell;
-
+    add_number(&g_data->grid, get_new_pos(g_data->grid));
+    add_number(&g_data->grid, get_new_pos(g_data->grid));
     calculate_dimensions(g_data);
 }
 

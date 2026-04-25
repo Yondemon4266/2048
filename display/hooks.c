@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:27:16 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 15:23:08 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/25 16:57:24 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ void    key_hook(t_game_data *g_data)
             going_left(&g_data->grid);
             break ;
         case KEY_RIGHT:
+            going_right(&g_data->grid);
             break ;
         case KEY_UP:
+            going_up(&g_data->grid);
             break ;
         case KEY_DOWN:
+            going_down(&g_data->grid);
             break ;
         case KEY_RESIZE:
             calculate_dimensions(g_data);

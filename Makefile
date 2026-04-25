@@ -10,7 +10,7 @@ NCURSES_LIB = -lncurses
 BUILD_DIR = .build
 
 C_FILES = main.c display/display_utils.c display/display.c display/hooks.c \
-	utils/reset_merged.c utils/swipe.c
+	utils/reset_merged.c utils/swipe.c utils/add_number.c utils/check_game_finished.c utils/count_zeros.c \
 
 O_FILES = $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 
@@ -19,7 +19,7 @@ INCLUDES = game.h
 DEPS = $(O_FILES:.o=.d)
 
 $(NAME): $(O_FILES)
-	$(CC) $(CFLAGS) $(O_FILES) -o $(NAME) $(NCURSES_LIB)
+	$(CC) $(CFLAGS) $(O_FILES) -g -o $(NAME) $(NCURSES_LIB)
 
 all: $(NAME)
 

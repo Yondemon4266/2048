@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   add_number.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 16:23:31 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:42:02 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 16:50:09 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "../game.h"
 
 int get_new_pos(t_grid grid)
 {
@@ -41,7 +41,7 @@ void    add_number(t_grid *grid, int pos)
             {
                 if (pos == index)
                 {
-                    grid->cell_grid[x][y].value == value;
+                    grid->cell_grid[x][y].value = value;
                     return ;
                 }
                 else

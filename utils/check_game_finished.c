@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_game_finished.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:41:52 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 15:57:33 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/25 16:51:49 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "../game.h"
 
-int check_game_finished(t_grid grid)
-{
-    if (going_left(grid) + going_right(grid) + going_down(grid) + going_up(grid) == 0)
-        return (1);
-    return (0);
-}
 
-int    going_left(t_grid grid)
+static int    going_left_read(t_grid grid)
 {
     int moved = 0;
     int y = 0;
@@ -54,7 +48,7 @@ int    going_left(t_grid grid)
     return (moved);
 }
 
-int    going_right(t_grid grid)
+static int    going_right_read(t_grid grid)
 {
     int moved = 0;
     int y = 0;
@@ -89,7 +83,7 @@ int    going_right(t_grid grid)
     return (moved);
 }
 
-int    going_down(t_grid grid)
+static int    going_down_read(t_grid grid)
 {
     int moved = 0;
     int x = 0;
@@ -124,7 +118,7 @@ int    going_down(t_grid grid)
     return (moved);
 }
 
-int    going_up(t_grid grid)
+static int    going_up_read(t_grid grid)
 {
     int moved = 0;
     int x = 0;
@@ -158,3 +152,12 @@ int    going_up(t_grid grid)
     }
     return (moved);
 }
+
+
+int check_game_finished(t_grid grid)
+{
+    if (going_left_read(grid) + going_right_read(grid) + going_down_read(grid) + going_up_read(grid) == 0)
+        return (1);
+    return (0);
+}
+
