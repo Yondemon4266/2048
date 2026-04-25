@@ -9,7 +9,7 @@ NCURSES_LIB = -lncurses
 
 BUILD_DIR = .build
 
-C_FILES = main.c
+C_FILES = main.c display/display_utils.c display/display.c display/hooks.c
 
 O_FILES = $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 
