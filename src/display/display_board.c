@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_board.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 16:51:52 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/26 18:14:56 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,43 +62,50 @@ static int get_color(int value)
 
 static void	draw_numbers(t_game_data *g_data)
 {
-	int	y;
-	int	x;
-	int	value;
-	int	len_value;
-	int	centered_x;
-	int	centered_y;
-	int	pos_x;
-	int	pos_y;
-
-	y = 0;
+	int	y = 0;
 	while (y < BOARD_SIZE)
 	{
-		x = 0;
+		int x = 0;
 		while (x < BOARD_SIZE)
 		{
-			value = g_data->grid.cell_grid[x][y].value;
-			len_value = count_len_number(value);
-			centered_x = g_data->start_x + (g_data->cell_width * y) + get_center_offset(g_data->cell_width, len_value) + 1;
-			centered_y = g_data->start_y + (g_data->cell_height * x) + (g_data->cell_height / 2);
+			int value = g_data->grid.cell_grid[x][y].value;
 			int color = get_color(value);
+			int pos_x = g_data->start_x + (g_data->cell_width * y);
+			int pos_y = g_data->start_y + (g_data->cell_height * x);
+
 			int i = 1;
 			while (i < g_data->cell_height)
 			{
 				int j = 1;
 				while (j < g_data->cell_width)
 				{
-					pos_x = g_data->start_x + (g_data->cell_width * y);
-					pos_y = g_data->start_y + (g_data->cell_height * x);
 					if (value == 0)
-						ncurses_print_nbr(-1, pos_x + j, pos_y + i, 30);
+						ncurses_print_nbr(-1, pos_x + j, pos_y + i, 30, 0);
 					else
-						ncurses_print_nbr(-1, pos_x + j, pos_y + i, color);
+						ncurses_print_nbr(-1, pos_x + j, pos_y + i, color, 0);
 					j++;
 				}
 				i++;
-				if (value != 0)
-					ncurses_print_nbr(value, centered_x, centered_y, color);
+			}
+
+			if (value != 0)
+			{
+				int len_value = count_len_number(value);
+				int ascii_width = (len_value * 5) + (len_value - 1); 
+				int centered_x;
+				int centered_y; 
+				if (g_data->is_ascii)
+				{
+					centered_x = pos_x + get_center_offset(g_data->cell_width, ascii_width);
+					centered_y = pos_y + get_center_offset(g_data->cell_height, 5);
+				}
+				else
+				{
+					centered_x = pos_x + get_center_offset(g_data->cell_width, len_value);
+					centered_y = pos_y + get_center_offset(g_data->cell_height, 1);
+				}
+
+				ncurses_print_nbr(value, centered_x, centered_y, color, g_data->is_ascii);
 			}
 			x++;
 		}

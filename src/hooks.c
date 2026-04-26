@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:27:16 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 16:45:04 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/26 18:12:59 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,22 @@ void key_hook(t_game_data *g_data)
                         reset_game_data(g_data);
                         g_data->current_state = STATE_PLAYING;
                     }
-                    else if (g_data->menu_data.selection == 2)
+                    else if(g_data->menu_data.selection == 2)
+                    {
+                        g_data->is_ascii = !g_data->is_ascii;
+                    }
+                    else if (g_data->menu_data.selection == 3)
                         g_data->current_state = STATE_QUIT;
                 }
                 else
                 {
                     if (g_data->menu_data.selection == 0)
                     g_data->current_state = STATE_PLAYING;
-                    else if (g_data->menu_data.selection == 1)
+                    else if(g_data->menu_data.selection == 1)
+                    {
+                        g_data->is_ascii = !g_data->is_ascii;
+                    }
+                    else if (g_data->menu_data.selection == 2)
                     g_data->current_state = STATE_QUIT;
                 }
                 break;

@@ -28,7 +28,7 @@ void	calculate_dimensions(t_game_data *g_data)
 	g_data->start_x = get_center_offset(COLS, g_data->board_width);
 }
 
-int	ncurses_print_nbr(int nb, int x, int y, int color)
+int	ncurses_print_nbr(int nb, int x, int y, int color, int is_ascii)
 {
 	if (nb == -1)
 	{
@@ -39,16 +39,21 @@ int	ncurses_print_nbr(int nb, int x, int y, int color)
 	}
 	if (nb >= 10)
 	{
-		x = ncurses_print_nbr(nb / 10, x, y, color);
+		x = ncurses_print_nbr(nb / 10, x, y, color, is_ascii);
 	}
 	if (nb != 0)
 	{
 		attron(COLOR_PAIR(color));
-		mvaddch(y, x, (nb % 10) + '0');
+		if (is_ascii)
+			draw_ascii_digit((nb % 10), x, y);
+		else
+			mvaddch(y, x, (nb % 10) + '0');
 		attroff(COLOR_PAIR(color));
 	}
 	else
 		mvaddch(y, x, ' ');
+	if (is_ascii)
+		return (x + 6);
 	return (x + 1);
 }
 
@@ -75,7 +80,14 @@ int	count_len_number(int nb)
 
 int is_terminal_valid(t_game_data *g_data)
 {
-	if (g_data->cell_height < 1 || g_data->cell_width < 4)
+	int	min_height = 1;
+	int	min_width = 4;
+	if (g_data->is_ascii)
+	{
+		min_height = 6;
+		min_width = (4 * BOARD_SIZE) + 3;
+	}
+	if (g_data->cell_height < min_height || g_data->cell_width < min_width)
         return (0);
     return (1); 
 }

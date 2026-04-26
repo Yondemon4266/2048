@@ -21,6 +21,7 @@ C_FILES = src/main.c \
           src/display/display_board.c \
           src/display/display_utils.c \
           src/display/display_menu.c \
+          src/display/display_digit_ascii.c \
           src/logic/add_number.c \
           src/logic/check_game_finished.c \
           src/logic/check_win_cond_value.c \

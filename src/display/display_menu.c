@@ -34,8 +34,9 @@ void    draw_menu_borders(t_game_data *g_data)
 void    draw_menu_elements(t_game_data *g_data)
 {
     int i = 0;
-    char    *menu_elements_beginning[2] = {"Start playing", "Quit game"};
-    char    *menu_elements_started[3] = {"Continue", "Start new game", "Quit game"};
+    char    *menu_elements_beginning[3] = {"Start playing", "ASCII ART","Quit game"};
+    char    *menu_elements_started[4] = {"Continue", "Start new game", "ASCII ART", "Quit game"};
+
     char    **menu_elements = NULL;
 
     if (g_data->started)
@@ -59,11 +60,19 @@ void    draw_menu_elements(t_game_data *g_data)
         {
             attron(COLOR_PAIR(2));
             mvprintw(g_data->menu_data.start_elements_y + (i * 2), centered_x, "%s", menu_elements[i]);
+            if (g_data->is_ascii && g_data->started && i == 2)
+                printw("%s", " OK");
+            else if (g_data->is_ascii && !g_data->started && i == 1)
+                printw("%s", " OK");
             attroff(COLOR_PAIR(2));
         }
         else
         {
             mvprintw(g_data->menu_data.start_elements_y + (i * 2), centered_x, "%s", menu_elements[i]);
+            if (g_data->is_ascii && g_data->started && i == 2)
+                printw("%s", " OK");
+            else if (g_data->is_ascii && !g_data->started && i == 1)
+                printw("%s", " OK");
         }
         
         x = 1;

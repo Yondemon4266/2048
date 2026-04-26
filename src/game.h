@@ -70,6 +70,7 @@ typedef struct s_game_data
 	int			pause_game;
 	int 		current_state;
 	int			started;
+	int			is_ascii;
 	t_menu_data	menu_data;
 	t_grid		grid;
 }				t_game_data;
@@ -79,7 +80,7 @@ void    		draw_menu_elements(t_game_data *g_data);
 void			draw_board(t_game_data *g_data);
 void			calculate_dimensions(t_game_data *g_data);
 void			key_hook(t_game_data *g_data);
-int				ncurses_print_nbr(int nb, int x, int y, int color);
+int				ncurses_print_nbr(int nb, int x, int y, int color, int is_ascii);
 int				count_len_number(int nb);
 int				get_center_offset(int container_size, int item_size);
 void			reset_merged(t_grid *grid);
@@ -97,9 +98,8 @@ int				ft_strlen(char *s);
 int	            is_win(t_grid grid);
 void			reset_grid(t_grid *grid);
 void			reset_game_data(t_game_data *g_data);
-
-
-int is_terminal_valid(t_game_data *g_data);
+void 			draw_ascii_digit(int digit, int start_x, int start_y);
+int 			is_terminal_valid(t_game_data *g_data);
 
 
 
