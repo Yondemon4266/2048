@@ -80,8 +80,8 @@ int	count_len_number(int nb)
 
 int is_terminal_valid(t_game_data *g_data)
 {
-	int	min_height = 1;
-	int	min_width = 4;
+	int	min_height = 2;
+	int	min_width = 5;
 	if (g_data->is_ascii)
 	{
 		min_height = 6;

@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 18:14:56 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 18:42:00 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	draw_numbers(t_game_data *g_data)
 				else
 				{
 					centered_x = pos_x + get_center_offset(g_data->cell_width, len_value);
-					centered_y = pos_y + get_center_offset(g_data->cell_height, 1);
+					centered_y = pos_y + get_center_offset(g_data->cell_height, 0);
 				}
 
 				ncurses_print_nbr(value, centered_x, centered_y, color, g_data->is_ascii);
