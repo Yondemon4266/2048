@@ -12,22 +12,22 @@
 
 #include "../game.h"
 
-int count_zeros(t_grid grid)
+int	count_zeros(t_grid grid)
 {
-    int res = 0;
-    int y = 0;
-    
-    while (y < grid.row)
-    {
-        int x = 0;
-        while (x < grid.column)
-        {
-            if (grid.cell_grid[x][y].value == 0)
-                res++;
-            x++;
-        }
-        y++;
-    }
+	int res = 0;
+	int y = 0;
 
-    return (res);
+	while (y < grid.row)
+	{
+		int x = 0;
+		while (x < grid.column)
+		{
+			if (grid.cell_grid[x][y].value == 0)
+				res++;
+			x++;
+		}
+		y++;
+	}
+
+	return (res);
 }

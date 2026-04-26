@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reset_merged.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 14:56:29 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 15:20:06 by aluslu           ###   ########.fr       */
+/*   Created: 2026/04/25 22:34:06 by aluslu            #+#    #+#             */
+/*   Updated: 2026/04/26 11:41:53 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../game.h"
+#include "game.h"
 
-void    reset_merged(t_grid *grid)
+void	ft_putstr_fd(int fd, char *s)
 {
-    int y = 0;
-    
-    while (y < grid->row)
-    {
-        int x = 0;
-        while (x < grid->column)
-        {
-            grid->cell_grid[x][y].merged = 0;
-            x++;
-        }
-        y++;
-    }
+	int i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

@@ -7,10 +7,24 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 
 NCURSES_LIB = -lncurses
 
+SRC = src
+
+DISPLAY=display
+
 BUILD_DIR = .build
 
-C_FILES = main.c display/display_utils.c display/display.c display/hooks.c \
-	utils/reset_merged.c utils/swipe.c utils/add_number.c utils/check_game_finished.c utils/count_zeros.c \
+C_FILES = src/main.c \
+          src/hooks.c \
+          src/utils.c \
+          src/display/display_board.c \
+          src/display/display_utils.c \
+          src/logic/add_number.c \
+          src/logic/check_game_finished.c \
+          src/logic/check_win_cond_value.c \
+          src/logic/count_zeros.c \
+          src/logic/handler.c \
+          src/logic/reset_merged.c \
+          src/logic/swipe.c
 
 O_FILES = $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 
