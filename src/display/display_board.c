@@ -18,7 +18,7 @@ static void	draw_board_lines(t_game_data *g_data)
 	int	x;
 
 	y = -1;
-	while (++y <= g_data->nb_of_cell)
+	while (++y <= BOARD_SIZE)
 	{
 		x = 0;
 		while (x < g_data->board_width)
@@ -36,7 +36,7 @@ static void	draw_board_cols(t_game_data *g_data)
 	int	x;
 
 	x = -1;
-	while (++x <= g_data->nb_of_cell)
+	while (++x <= BOARD_SIZE)
 	{
 		y = 0;
 		while (y <= g_data->board_height)
@@ -72,10 +72,10 @@ static void	draw_numbers(t_game_data *g_data)
 	int	pos_y;
 
 	y = 0;
-	while (y < g_data->nb_of_cell)
+	while (y < BOARD_SIZE)
 	{
 		x = 0;
-		while (x < g_data->nb_of_cell)
+		while (x < BOARD_SIZE)
 		{
 			value = g_data->grid.cell_grid[x][y].value;
 			len_value = count_len_number(value);

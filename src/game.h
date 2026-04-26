@@ -1,7 +1,14 @@
 #ifndef __GAME_H
 # define __GAME_H
 
+#ifndef BOARD_SIZE
+# define BOARD_SIZE 4
+#endif
 
+#if BOARD_SIZE != 4 && BOARD_SIZE != 5
+# undef BOARD_SIZE
+# define BOARD_SIZE 4 
+#endif
 
 # include <limits.h>
 # include <ncurses.h>
@@ -11,11 +18,12 @@
 
 enum			e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 2
 };
 
 enum e_game_state
 {
+	STATE_MENU,
     STATE_PLAYING,
     STATE_WIN_MENU,
     STATE_GAMEOVER,
@@ -25,7 +33,7 @@ enum e_game_state
 
 typedef struct s_cell
 {
-	long long	value;
+	int			value;
 	int			merged;
 }				t_cell;
 
@@ -34,8 +42,16 @@ typedef struct s_grid
 	int			row;
 	int			column;
 	int			score;
-	t_cell		cell_grid[4][4];
+	int			win_value;
+	t_cell		cell_grid[BOARD_SIZE][BOARD_SIZE];
 }				t_grid;
+
+
+typedef	struct	s_menu_data
+{
+	int element_count;
+    int start_elements_y;
+} 		t_menu_data;
 
 typedef struct s_game_data
 {
@@ -51,9 +67,12 @@ typedef struct s_game_data
     int         win_flag;
 	int			pause_game;
 	int 		current_state;
+	t_menu_data	menu_data;
 	t_grid		grid;
 }				t_game_data;
 
+void    		draw_menu_borders(t_game_data *g_data);
+void    		draw_menu_elements(t_game_data *g_data);
 void			draw_board(t_game_data *g_data);
 void			calculate_dimensions(t_game_data *g_data);
 void			key_hook(t_game_data *g_data);
@@ -69,8 +88,9 @@ int				count_zeros(t_grid grid);
 int				gameover(t_grid grid);
 void			add_number(t_grid *grid, int pos);
 int				get_new_pos(t_grid grid);
-int				check_win_cond_value(void);
+void 			check_win_cond_value(t_grid *grid);
 void			ft_putstr_fd(int fd, char *s);
+int				ft_strlen(char *s);
 int	            is_win(t_grid grid);
 
 
@@ -81,8 +101,10 @@ int is_terminal_valid(t_game_data *g_data);
 
 void    handle_too_small_screen();
 void    handle_playing_state(t_game_data *g_data);
-void  handle_gameover_state(t_game_data *g_data);
-void  handle_win_state(t_game_data *g_data);
+void  	handle_gameover_state(t_game_data *g_data);
+void  	handle_win_state(t_game_data *g_data);
+void 	handle_menu(t_game_data *g_data);
+
 
 
 #endif
