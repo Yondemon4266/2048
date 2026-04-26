@@ -34,7 +34,14 @@ void    draw_menu_borders(t_game_data *g_data)
 void    draw_menu_elements(t_game_data *g_data)
 {
     int i = 0;
-    char    *menu_elements[2] = {"Start playing", "Quit game"};
+    char    *menu_elements_beginning[2] = {"Start playing", "Quit game"};
+    char    *menu_elements_started[3] = {"Continue", "Start new game", "Quit game"};
+    char    **menu_elements = NULL;
+
+    if (g_data->started)
+        menu_elements = menu_elements_started;
+    else
+        menu_elements = menu_elements_beginning;
     
     while (i < g_data->menu_data.element_count)
     {
@@ -48,7 +55,16 @@ void    draw_menu_elements(t_game_data *g_data)
             x++;
         }
         
-        mvprintw(g_data->menu_data.start_elements_y + (i * 2), centered_x, "%s", menu_elements[i]);
+        if (g_data->menu_data.selection == i)
+        {
+            attron(COLOR_PAIR(2));
+            mvprintw(g_data->menu_data.start_elements_y + (i * 2), centered_x, "%s", menu_elements[i]);
+            attroff(COLOR_PAIR(2));
+        }
+        else
+        {
+            mvprintw(g_data->menu_data.start_elements_y + (i * 2), centered_x, "%s", menu_elements[i]);
+        }
         
         x = 1;
         int separator_y = g_data->menu_data.start_elements_y + (i * 2) + 1; 

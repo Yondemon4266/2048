@@ -25,6 +25,7 @@ enum e_game_state
 {
 	STATE_MENU,
     STATE_PLAYING,
+	STATE_RESET,
     STATE_WIN_MENU,
     STATE_GAMEOVER,
     STATE_QUIT,
@@ -51,6 +52,7 @@ typedef	struct	s_menu_data
 {
 	int element_count;
     int start_elements_y;
+	int	selection;
 } 		t_menu_data;
 
 typedef struct s_game_data
@@ -67,6 +69,7 @@ typedef struct s_game_data
     int         win_flag;
 	int			pause_game;
 	int 		current_state;
+	int			started;
 	t_menu_data	menu_data;
 	t_grid		grid;
 }				t_game_data;
@@ -92,7 +95,8 @@ void 			check_win_cond_value(t_grid *grid);
 void			ft_putstr_fd(int fd, char *s);
 int				ft_strlen(char *s);
 int	            is_win(t_grid grid);
-
+void			reset_grid(t_grid *grid);
+void			reset_game_data(t_game_data *g_data);
 
 
 int is_terminal_valid(t_game_data *g_data);

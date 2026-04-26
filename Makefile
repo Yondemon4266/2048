@@ -27,7 +27,8 @@ C_FILES = src/main.c \
           src/logic/count_zeros.c \
           src/logic/handler.c \
           src/logic/reset_merged.c \
-          src/logic/swipe.c
+          src/logic/swipe.c \
+          src/logic/reset_grid.c
 
 O_FILES = $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 

@@ -13,6 +13,7 @@ void    handle_too_small_screen()
 void    handle_playing_state(t_game_data *g_data)
 {
     draw_board(g_data);
+    g_data->started = 1;
 }
 
 void  handle_gameover_state(t_game_data *g_data)
@@ -34,7 +35,10 @@ void  handle_win_state(t_game_data *g_data)
 
 void handle_menu(t_game_data *g_data)
 {
-    g_data->menu_data.element_count = 2;
+    if (g_data->started)
+        g_data->menu_data.element_count = 3;
+    else
+        g_data->menu_data.element_count = 2;
 
     g_data->menu_data.start_elements_y = g_data->start_y + get_center_offset(g_data->board_height, g_data->menu_data.element_count);
     draw_menu_borders(g_data);

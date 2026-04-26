@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 13:54:53 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 16:42:51 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	init_game_data(t_game_data *g_data)
 	g_data->margin = 1;
 	g_data->grid.row = BOARD_SIZE;
 	g_data->grid.column = BOARD_SIZE;
+	add_number(&g_data->grid, get_new_pos(g_data->grid));
+	add_number(&g_data->grid, get_new_pos(g_data->grid));
+	calculate_dimensions(g_data);
+	g_data->current_state = STATE_MENU;
+}
+
+void	reset_game_data(t_game_data *g_data)
+{
+	reset_grid(&g_data->grid);
+	g_data->grid.score = 0;
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
 	calculate_dimensions(g_data);
