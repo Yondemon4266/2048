@@ -6,11 +6,11 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 22:34:06 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/25 22:35:59 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 11:41:53 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../game.h"
+#include "game.h"
 
 void	ft_putstr_fd(int fd, char *s)
 {

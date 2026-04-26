@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:41:52 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 23:18:27 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 11:56:47 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,17 +204,6 @@ int	is_win(t_grid grid)
 		y++;
 	}
 	return (0);
-}
-
-void	check_display_win(t_game_data *g_data)
-{
-	if (!g_data->win_flag)
-	{ 
-		if (is_win(g_data->grid))
-			g_data->win_flag = 1;
-	}
-	else
-		mvprintw(0, 0, "You won ! you can keep playing though");
 }
 
 int	gameover(t_grid grid)

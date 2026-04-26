@@ -22,11 +22,6 @@ void	calculate_dimensions(t_game_data *g_data)
 	}
 	g_data->cell_height = ideal_height - g_data->margin;
 	g_data->cell_width = ideal_width - (g_data->margin * 2);
-
-	if (g_data->cell_height < 1 || g_data->cell_width < 4)
-		g_data->pause_game = 1;
-	else
-		g_data->pause_game = 0;
 	g_data->board_height = g_data->cell_height * g_data->nb_of_cell;
 	g_data->board_width = g_data->cell_width * g_data->nb_of_cell;
 	g_data->start_y = get_center_offset(LINES, g_data->board_height);
@@ -70,4 +65,12 @@ int	count_len_number(int nb)
 		count++;
 	}
 	return (count);
+}
+
+
+int is_terminal_valid(t_game_data *g_data)
+{
+	if (g_data->cell_height < 1 || g_data->cell_width < 4)
+        return (0);
+    return (1); 
 }
