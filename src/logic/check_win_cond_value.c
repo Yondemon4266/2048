@@ -6,28 +6,39 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 22:21:27 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 13:04:40 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 13:49:49 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-int	check_win_cond_value(void)
-{
-	long long min = 2;
-	long long win_val = (long long)WIN_VALUE;
 
-	if (win_val < min)
-		return (-1);
-	if (win_val > INT_MAX)
-		return (-1);
-	while (min < win_val)
-	{
-		min *= 2;
-		if (min > INT_MAX || min > win_val)
-			return (-1);
-		if (min == win_val)
-			return (1);
-	}
-	return (-1);
+
+void check_win_cond_value(t_grid *grid)
+{
+    long long win_val = (long long)WIN_VALUE;
+    long long current = 2;
+    int count_power = 1;
+    int max_power = (BOARD_SIZE * BOARD_SIZE) + 1;
+
+    if (win_val < 8)
+    {
+        grid->win_value = 2048;
+        return ;
+    }
+
+    while (current < win_val)
+    {
+        current *= 2;
+        count_power++;
+    }
+
+    if (current == win_val && count_power <= max_power)
+    {
+        grid->win_value = (int)win_val;
+    }
+    else
+    {
+		grid->win_value = 2048;
+    }
 }

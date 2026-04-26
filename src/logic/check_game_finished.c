@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:41:52 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/26 11:56:47 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 13:44:09 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ int	is_win(t_grid grid)
         x = 0;
 		while (x < grid.column)
 		{
-			if (grid.cell_grid[x][y].value == WIN_VALUE)
+			if (grid.cell_grid[x][y].value == grid.win_value)
 				return (1);
 			x++;
 		}

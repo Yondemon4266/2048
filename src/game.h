@@ -1,7 +1,14 @@
 #ifndef __GAME_H
 # define __GAME_H
 
+#ifndef BOARD_SIZE
+# define BOARD_SIZE 4
+#endif
 
+#if BOARD_SIZE != 4 && BOARD_SIZE != 5
+# undef BOARD_SIZE
+# define BOARD_SIZE 4 
+#endif
 
 # include <limits.h>
 # include <ncurses.h>
@@ -11,7 +18,7 @@
 
 enum			e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 2
 };
 
 enum e_game_state
@@ -25,7 +32,7 @@ enum e_game_state
 
 typedef struct s_cell
 {
-	long long	value;
+	int			value;
 	int			merged;
 }				t_cell;
 
@@ -34,7 +41,8 @@ typedef struct s_grid
 	int			row;
 	int			column;
 	int			score;
-	t_cell		cell_grid[4][4];
+	int			win_value;
+	t_cell		cell_grid[BOARD_SIZE][BOARD_SIZE];
 }				t_grid;
 
 typedef struct s_game_data
@@ -69,7 +77,7 @@ int				count_zeros(t_grid grid);
 int				gameover(t_grid grid);
 void			add_number(t_grid *grid, int pos);
 int				get_new_pos(t_grid grid);
-int				check_win_cond_value(void);
+void 			check_win_cond_value(t_grid *grid);
 void			ft_putstr_fd(int fd, char *s);
 int	            is_win(t_grid grid);
 
@@ -83,6 +91,7 @@ void    handle_too_small_screen();
 void    handle_playing_state(t_game_data *g_data);
 void  handle_gameover_state(t_game_data *g_data);
 void  handle_win_state(t_game_data *g_data);
+
 
 
 #endif

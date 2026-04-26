@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 11:33:21 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 13:45:22 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_game_data(t_game_data *g_data)
 {
-	g_data->nb_of_cell = 4;
+	g_data->nb_of_cell = BOARD_SIZE;
 	g_data->margin = 1;
-	g_data->grid.row = g_data->nb_of_cell;
-	g_data->grid.column = g_data->nb_of_cell;
+	g_data->grid.row = BOARD_SIZE;
+	g_data->grid.column = BOARD_SIZE;
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
 	g_data->current_state = STATE_PLAYING;
@@ -34,13 +34,8 @@ int	main(void)
 	curs_set(0);
 	set_escdelay(25);
 	keypad(stdscr, TRUE);
-	if (check_win_cond_value() == -1)
-	{
-		endwin();
-		ft_putstr_fd(2, "Error, win value must be a power of 2 and a positive integer\n");
-		return (-1);
-	}
 	init_game_data(&g_data);
+	check_win_cond_value(&g_data.grid);
 	while (g_data.current_state != STATE_QUIT)
 	{
         clear();

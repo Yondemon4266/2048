@@ -3,7 +3,9 @@ NAME = 2048
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
+SIZE ?= 4
+
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -DBOARD_SIZE=$(SIZE)
 
 NCURSES_LIB = -lncurses
 
