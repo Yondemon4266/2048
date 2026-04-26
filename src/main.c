@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 11:33:21 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 14:44:48 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,47 @@ void	init_game_data(t_game_data *g_data)
 	calculate_dimensions(g_data);
 }
 
+void	init_colors(void)
+{
+	start_color();
+	use_default_colors();
+	
+	init_pair(30, COLOR_BLACK, 254);				// vide
+
+	init_pair(1, COLOR_BLACK, 230);				// 2
+	init_pair(2, COLOR_BLACK, 223);				// 4
+	init_pair(3, COLOR_BLACK, 215);				// 8
+	init_pair(4, COLOR_WHITE, 209);				// 16
+	init_pair(5, COLOR_WHITE, 203);				// 32
+	init_pair(6, COLOR_WHITE, 196);				// 64
+	init_pair(7, COLOR_WHITE, 227);				// 128
+	init_pair(8, COLOR_BLACK, 226);				// 256
+	init_pair(9, COLOR_WHITE, 220);				// 512
+	init_pair(10, COLOR_WHITE, 214);			// 1024
+	init_pair(11, COLOR_BLACK, 208);			// 2048
+	init_pair(12, COLOR_WHITE, 202);			// 4096
+	init_pair(13, COLOR_WHITE, 196);			// 8192
+	init_pair(14, COLOR_WHITE, 190);			// 16 384
+	init_pair(15, COLOR_WHITE, 187);			// 32 768
+	init_pair(16, COLOR_WHITE, 183);			// 65 536
+	init_pair(17, COLOR_WHITE, 179);			// 131 072
+	init_pair(18, COLOR_BLACK, 175);			// 262 144
+	init_pair(19, COLOR_WHITE, 169);			// 524 288
+	init_pair(20, COLOR_WHITE, 164);			// 1 048 576
+	init_pair(21, COLOR_BLACK, 160);			// 2 097 152
+	init_pair(22, COLOR_WHITE, 154);			// 4 194 304
+	init_pair(23, COLOR_WHITE, 150);			// 8 388 608
+	init_pair(24, COLOR_WHITE, 145);			// 16 777 216
+	init_pair(25, COLOR_WHITE, 140);			// 33 554 432
+	init_pair(26, COLOR_WHITE, 130);			// 67 108 864
+}
+
 int	main(void)
 {
 	t_game_data g_data = {0};
 	srand(time(NULL));
 	initscr();
+	init_colors();
 	noecho();
 	cbreak();
 	curs_set(0);
