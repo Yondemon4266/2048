@@ -28,20 +28,25 @@ void	calculate_dimensions(t_game_data *g_data)
 	g_data->start_x = get_center_offset(COLS, g_data->board_width);
 }
 
-int	ncurses_print_nbr(int nb, int x, int y)
+int	ncurses_print_nbr(int nb, int x, int y, int color)
 {
-	if (nb < 0)
+	if (nb == -1)
 	{
-		mvaddch(y, x, '-');
-		nb = -nb;
-		x++;
+		attron(COLOR_PAIR(color));
+		mvaddch(y, x, ' ');
+		attroff(COLOR_PAIR(color));
+		return (nb);
 	}
 	if (nb >= 10)
 	{
-		x = ncurses_print_nbr(nb / 10, x, y);
+		x = ncurses_print_nbr(nb / 10, x, y, color);
 	}
 	if (nb != 0)
+	{
+		attron(COLOR_PAIR(color));
 		mvaddch(y, x, (nb % 10) + '0');
+		attroff(COLOR_PAIR(color));
+	}
 	else
 		mvaddch(y, x, ' ');
 	return (x + 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_board.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 13:11:42 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 14:45:44 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ static void	draw_board_cols(t_game_data *g_data)
 	}
 }
 
+static int get_color(int value)
+{
+	int ans = 0;
+
+	while (value > 1)
+	{
+		value /= 2;
+		ans++;
+	}
+	return (ans);
+}
+
 static void	draw_numbers(t_game_data *g_data)
 {
 	int	y;
@@ -56,6 +68,8 @@ static void	draw_numbers(t_game_data *g_data)
 	int	len_value;
 	int	centered_x;
 	int	centered_y;
+	int	pos_x;
+	int	pos_y;
 
 	y = 0;
 	while (y < BOARD_SIZE)
@@ -65,11 +79,27 @@ static void	draw_numbers(t_game_data *g_data)
 		{
 			value = g_data->grid.cell_grid[x][y].value;
 			len_value = count_len_number(value);
-			centered_x = g_data->start_x + (g_data->cell_width * y)
-				+ get_center_offset(g_data->cell_width, len_value);
-			centered_y = g_data->start_y + (g_data->cell_height * x)
-				+ (g_data->cell_height / 2);
-			ncurses_print_nbr(value, centered_x, centered_y);
+			centered_x = g_data->start_x + (g_data->cell_width * y) + get_center_offset(g_data->cell_width, len_value) + 1;
+			centered_y = g_data->start_y + (g_data->cell_height * x) + (g_data->cell_height / 2);
+			int color = get_color(value);
+			int i = 1;
+			while (i < g_data->cell_height)
+			{
+				int j = 1;
+				while (j < g_data->cell_width)
+				{
+					pos_x = g_data->start_x + (g_data->cell_width * y);
+					pos_y = g_data->start_y + (g_data->cell_height * x);
+					if (value == 0)
+						ncurses_print_nbr(-1, pos_x + j, pos_y + i, 30);
+					else
+						ncurses_print_nbr(-1, pos_x + j, pos_y + i, color);
+					j++;
+				}
+				i++;
+				if (value != 0)
+					ncurses_print_nbr(value, centered_x, centered_y, color);
+			}
 			x++;
 		}
 		y++;

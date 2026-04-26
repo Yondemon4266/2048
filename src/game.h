@@ -76,7 +76,7 @@ void    		draw_menu_elements(t_game_data *g_data);
 void			draw_board(t_game_data *g_data);
 void			calculate_dimensions(t_game_data *g_data);
 void			key_hook(t_game_data *g_data);
-int				ncurses_print_nbr(int nb, int x, int y);
+int				ncurses_print_nbr(int nb, int x, int y, int color);
 int				count_len_number(int nb);
 int				get_center_offset(int container_size, int item_size);
 void			reset_merged(t_grid *grid);
