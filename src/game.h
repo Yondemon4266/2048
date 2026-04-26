@@ -1,6 +1,8 @@
 #ifndef __GAME_H
 # define __GAME_H
 
+
+
 # include <limits.h>
 # include <ncurses.h>
 # include <stdlib.h>

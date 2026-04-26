@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 16:23:31 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 16:50:09 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 12:54:01 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	add_number(t_grid *grid, int pos)
 	int y = 0;
 	int index = 0;
 
-	int random = rand() % 5;
+	int random = rand() % 10;
 	int value = 0;
 
 	if (random == 4)
