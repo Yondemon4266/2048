@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 16:42:51 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/26 16:53:08 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_colors(void)
 	start_color();
 	use_default_colors();
 	
-	init_pair(30, COLOR_BLACK, 254);				// vide
+	init_pair(30, COLOR_BLACK, 254);			// vide
 
 	init_pair(1, COLOR_BLACK, 230);				// 2
 	init_pair(2, COLOR_BLACK, 223);				// 4

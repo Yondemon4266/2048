@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 12:26:29 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 14:45:44 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/26 16:51:52 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	draw_board(t_game_data *g_data)
 	draw_board_lines(g_data);
 	draw_board_cols(g_data);
 	draw_numbers(g_data);
+	mvprintw(1, 1, "Score: %d", g_data->grid.score);
 }

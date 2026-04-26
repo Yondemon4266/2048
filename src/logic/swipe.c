@@ -6,7 +6,7 @@
 /*   By: alemyre <alemyre@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:57:25 by alemyre           #+#    #+#             */
-/*   Updated: 2026/04/25 18:15:55 by alemyre          ###   ########.fr       */
+/*   Updated: 2026/04/26 16:51:00 by alemyre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	going_up(t_grid *grid)
 				{
 					grid->cell_grid[x - index - 1][y].value += grid->cell_grid[x
 						- index][y].value;
+					grid->score += grid->cell_grid[x - index - 1][y].value;
 					grid->cell_grid[x - index - 1][y].merged++;
 					grid->cell_grid[x - index][y].value = 0;
 					moved++;
@@ -89,6 +90,7 @@ int	going_down(t_grid *grid)
 				{
 					grid->cell_grid[x + index + 1][y].value += grid->cell_grid[x
 						+ index][y].value;
+					grid->score += grid->cell_grid[x + index + 1][y].value;
 					grid->cell_grid[x + index + 1][y].merged++;
 					grid->cell_grid[x + index][y].value = 0;
 					moved++;
@@ -133,6 +135,7 @@ int	going_left(t_grid *grid)
 				{
 					grid->cell_grid[x][y - index - 1].value
 						+= grid->cell_grid[x][y - index].value;
+					grid->score += grid->cell_grid[x][y - index - 1].value;
 					grid->cell_grid[x][y - index - 1].merged++;
 					grid->cell_grid[x][y - index].value = 0;
 					moved++;
@@ -178,6 +181,7 @@ int	going_right(t_grid *grid)
 				{
 					grid->cell_grid[x][y + index + 1].value
 						+= grid->cell_grid[x][y + index].value;
+					grid->score += grid->cell_grid[x][y + index + 1].value;
 					grid->cell_grid[x][y + index + 1].merged++;
 					grid->cell_grid[x][y + index].value = 0;
 					moved++;
