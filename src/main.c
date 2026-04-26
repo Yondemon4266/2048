@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:47:24 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 13:45:22 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 13:54:53 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_game_data(t_game_data *g_data)
 	g_data->grid.column = BOARD_SIZE;
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
 	add_number(&g_data->grid, get_new_pos(g_data->grid));
-	g_data->current_state = STATE_PLAYING;
 	calculate_dimensions(g_data);
+	g_data->current_state = STATE_MENU;
 }
 
 int	main(void)
@@ -43,7 +43,9 @@ int	main(void)
 			handle_too_small_screen(&g_data);
 		else
 		{
-			if (g_data.current_state == STATE_PLAYING)
+			if (g_data.current_state == STATE_MENU)
+				handle_menu(&g_data);
+			else if (g_data.current_state == STATE_PLAYING)
 				handle_playing_state(&g_data);
 			else if (g_data.current_state == STATE_WIN_MENU)
 				handle_win_state(&g_data);

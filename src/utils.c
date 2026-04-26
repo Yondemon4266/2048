@@ -6,7 +6,7 @@
 /*   By: aluslu <aluslu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 22:34:06 by aluslu            #+#    #+#             */
-/*   Updated: 2026/04/26 11:41:53 by aluslu           ###   ########.fr       */
+/*   Updated: 2026/04/26 15:14:33 by aluslu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,14 @@ void	ft_putstr_fd(int fd, char *s)
 		write(fd, &s[i], 1);
 		i++;
 	}
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return i;
 }

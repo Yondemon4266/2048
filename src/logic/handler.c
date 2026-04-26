@@ -31,3 +31,12 @@ void  handle_win_state(t_game_data *g_data)
     int	centered_y = get_center_offset(LINES, 1);
     mvprintw(centered_y, centered_x, "You won ! Press 'p' to keep playing");
 }
+
+void handle_menu(t_game_data *g_data)
+{
+    g_data->menu_data.element_count = 2;
+
+    g_data->menu_data.start_elements_y = g_data->start_y + get_center_offset(g_data->board_height, g_data->menu_data.element_count);
+    draw_menu_borders(g_data);
+    draw_menu_elements(g_data);
+}
